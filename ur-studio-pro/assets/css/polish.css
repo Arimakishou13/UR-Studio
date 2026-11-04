@@ -1,0 +1,32 @@
+/* UR Studio visual refinement layer */
+:root{--ease:cubic-bezier(.22,.75,.25,1)}
+html{scroll-padding-top:100px}
+body{letter-spacing:.01em}
+.hdr{box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.brand{transition:transform .3s var(--ease),box-shadow .3s}
+.brand:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(34,193,255,.22)}
+.hero{padding-top:clamp(48px,7vw,94px)}
+.hero-in{gap:clamp(30px,5vw,76px)}
+.hero h1{max-width:15ch;text-wrap:balance}
+.lead{line-height:1.95}
+.mock{transition:transform .6s var(--ease),box-shadow .6s}
+.hero-vis:hover .mock{transform:perspective(1400px) rotateY(0) rotateX(0) translateY(-5px)}
+:lang(ar) .hero-vis:hover .mock{transform:perspective(1400px) rotateY(0) rotateX(0) translateY(-5px)}
+.sec{padding-block:clamp(64px,8vw,104px)}
+.svc{border-radius:22px;overflow:hidden;background:color-mix(in srgb,var(--surface) 45%,transparent)}
+.svc div{transition:background .3s,transform .3s;padding:clamp(24px,3vw,42px)}
+.svc div:hover{background:var(--surface2)}
+.plan{backdrop-filter:blur(12px);min-height:100%;box-shadow:0 14px 44px rgba(0,0,0,.08)}
+.plan h3{font-size:21px}
+.plan .for{line-height:1.8}
+.plan.pop{box-shadow:0 24px 65px -32px rgba(34,193,255,.6)}
+.btn{isolation:isolate;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.2),transparent 70%);transform:translateX(-120%);transition:transform .65s}
+.btn:hover::after{transform:translateX(120%)}
+.method,details,.notice,.final{backdrop-filter:blur(10px)}
+.step .n{box-shadow:0 0 0 7px color-mix(in srgb,var(--cyan) 8%,transparent);transition:transform .35s,box-shadow .35s}
+.step:hover .n{transform:scale(1.08);box-shadow:0 0 0 11px color-mix(in srgb,var(--cyan) 10%,transparent)}
+.rv{will-change:opacity,transform}
+::selection{background:rgba(34,193,255,.28);color:var(--text)}
+@media(max-width:640px){.hero{padding-bottom:60px}.mock{transform:none!important}.codechip{font-size:13px}.final{padding:44px 22px}}
+@media(prefers-reduced-motion:reduce){.btn::after{display:none}.rv{will-change:auto}}

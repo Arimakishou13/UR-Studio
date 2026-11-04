@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#050a1f">
+<title>UR Studio | لوحة الإدارة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<header class="top"><a class="brand" href="index.html"><span class="brandmark">UR</span><span><b>UR Studio</b><small>CONTROL CENTER</small></span></a><div class="top-actions"><span class="demo">نسخة تجريبية محلية</span><button id="theme" class="iconbtn" aria-label="تغيير المظهر">◐</button><a class="back" href="index.html">العودة للمتجر ↗</a></div></header>
+<main class="shell">
+  <section class="welcome"><div><span class="eyebrow">ADMIN WORKSPACE</span><h1>لوحة الإدارة والمالية</h1><p>تابع الطلبات والتحصيل والمصروفات والأداء المالي من مكان واحد.</p></div><div class="datebox"><span>تاريخ اليوم</span><b id="today"></b></div></section>
+  <div class="warning"><b>تنبيه بخصوص النسخة الحالية</b><span>هذه لوحة تشغيل تجريبية تحفظ البيانات في المتصفح الحالي فقط. لا تستخدمها لحسابات أو أموال حقيقية قبل ربطها بقاعدة بيانات وخادم آمن وصلاحيات دخول.</span></div>
+  <section class="stats" id="stats">
+    <article class="stat"><span>إجمالي قيمة الطلبات</span><b id="gross">0 ج.م</b><small>قيمة العقود المسجلة</small></article>
+    <article class="stat"><span>المبالغ المحصّلة المؤكدة</span><b id="collected">0 ج.م</b><small>بعد تأكيد الإدارة فقط</small></article>
+    <article class="stat"><span>بانتظار مراجعة التحويل</span><b id="pending">0 ج.م</b><small>ليست إيراداً مؤكداً بعد</small></article>
+    <article class="stat"><span>صافي النقدية</span><b id="net">0 ج.م</b><small>المحصّل المؤكد ناقص المصروفات</small></article>
+  </section>
+  <section class="panel"><div class="panelhead"><div><h2>الطلبات والمبيعات</h2><p>راجع حالة كل طلب وحدّث الدفع بعد التحقق من وصول التحويل.</p></div><div class="actions"><button class="btn secondary" id="export">تصدير CSV</button><button class="btn primary" id="demo">إضافة بيانات تجريبية</button></div></div>
+    <div class="filters"><input id="search" placeholder="ابحث بالاسم أو رقم الطلب أو البريد"><select id="status"><option value="all">كل الحالات</option><option value="pending_verification">بانتظار مراجعة الدفع</option><option value="confirmed">تم تأكيد الدفع</option><option value="in_progress">قيد التنفيذ</option><option value="completed">مكتمل</option><option value="cancelled">ملغي</option></select></div>
+    <div class="tablewrap"><table><thead><tr><th>رقم الطلب</th><th>العميل</th><th>الباقة</th><th>الإجمالي</th><th>المدفوع</th><th>المتبقي</th><th>حالة الدفع</th><th>حالة الطلب</th><th>إجراء</th></tr></thead><tbody id="orders"><tr><td colspan="9" class="empty">لا توجد طلبات حتى الآن.</td></tr></tbody></table></div>
+  </section>
+  <section class="lower">
+    <article class="panel"><div class="panelhead"><div><h2>تسجيل مصروف</h2><p>سجّل مصروفات التشغيل لحساب صافي النقدية.</p></div></div><form id="expenseForm" class="expenseform"><label>وصف المصروف<input id="expenseTitle" required maxlength="90" placeholder="مثال: استضافة الموقع"></label><label>المبلغ بالجنيه<input id="expenseAmount" required type="number" min="1" step="0.01" placeholder="0.00"></label><label>التصنيف<select id="expenseCategory"><option>تشغيل</option><option>استضافة ودومين</option><option>تسويق</option><option>أدوات وبرامج</option><option>أخرى</option></select></label><button class="btn primary" type="submit">حفظ المصروف</button></form><div class="list" id="expenseList"><p class="empty">لا توجد مصروفات مسجلة.</p></div></article>
+    <article class="panel"><div class="panelhead"><div><h2>ملخص الحسابات</h2><p>الفصل بين قيمة العقود والتحصيل الفعلي.</p></div></div><div class="ledger"><div><span>قيمة الطلبات</span><b id="lGross">0 ج.م</b></div><div><span>دفعات مؤكدة</span><b id="lPaid">0 ج.م</b></div><div><span>مبالغ معلّقة</span><b id="lPending">0 ج.م</b></div><div><span>مصروفات مسجلة</span><b id="lExpenses">0 ج.م</b></div><div class="total"><span>صافي النقدية</span><b id="lNet">0 ج.م</b></div></div><p class="footnote">لا تُحتسب الدفعات المعلّقة ضمن الإيرادات المحصلة. راجع كشف الحساب البنكي قبل تأكيد أي دفعة.</p></article>
+  </section>
+  <footer>UR Studio · Operations & Finance <span>البيانات التجريبية محفوظة محلياً على هذا المتصفح</span></footer>
+</main>
+<script src="assets/js/admin.js" defer></script>
+</body></html>
